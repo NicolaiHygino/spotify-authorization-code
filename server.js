@@ -9,7 +9,7 @@ const REDIRECT_URI = process.env.REDIRECT_URI
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
 
-const port = 3001
+const PORT = process.env.PORT || 3001
 const app = express()
 
 app.use(bodyParser.json())
@@ -43,6 +43,6 @@ app.post('/login', (req, res, next) => {
     .catch(next);
 })
 
-app.listen(port, () => {
-  console.log(`Listening to the port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Our app is running on port ${PORT}`)
 })
