@@ -15,6 +15,10 @@ const app = express()
 app.use(bodyParser.json())
 app.use(cors())
 
+app.get('/', (req, res) => {
+  res.send('hi')
+})
+
 app.post('/login', (req, res, next) => {
   console.log('Incoming Request')
   const code = req.body.code
