@@ -34,7 +34,7 @@ app.post('/login', (req, res, next) => {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
   }
-  axios.post('https://accounts.spotify.com/api/tokene', data, headers)
+  axios.post('https://accounts.spotify.com/api/token', data, headers)
     .then(response => res.json({
       accessToken: response.data.access_token,
       refreshToken: response.data.refresh_token,
