@@ -34,13 +34,30 @@ app.post('/login', (req, res, next) => {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
   }
-  axios.post('https://accounts.spotify.com/api/token', data, headers)
+  axios.post('https://accounts.spotify.com/api/tokene', data, headers)
     .then(response => res.json({
       accessToken: response.data.access_token,
       refreshToken: response.data.refresh_token,
       expiresIn: response.data.expires_in
     }))
-    .catch(next);
+    .catch(error => {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
 })
 
 app.listen(PORT, () => {
