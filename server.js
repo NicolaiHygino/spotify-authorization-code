@@ -5,7 +5,10 @@ const cors = require('cors')
 const axios = require('axios')
 const queryString = require('querystring')
 
-const REDIRECT_URI = process.env.REDIRECT_URI
+console.log(process.env.NODE_ENV)
+const REDIRECT_URI = process.env.NODE_ENV === 'development' 
+  ? 'http://localhost:3000/'
+  : process.env.REDIRECT_URI
 const CLIENT_ID = process.env.CLIENT_ID
 const CLIENT_SECRET = process.env.CLIENT_SECRET
 
