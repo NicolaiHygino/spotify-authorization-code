@@ -3,7 +3,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const axios = require('axios')
-const queryString = require('querystring')
 
 const REDIRECT_URI = process.env.NODE_ENV === 'development' 
   ? 'http://localhost:3000/'
